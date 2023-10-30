@@ -15,7 +15,13 @@ const hbs = exphbs.create({ helpers });
 
 const sess = {
     secret: 'Hyper Secret Super Turbo',
-    cookie: {},
+    cookie: {
+      // taken from Student Activity 18
+      maxAge: 60 * 60 * 1000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
