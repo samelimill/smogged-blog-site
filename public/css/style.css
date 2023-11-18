@@ -1,0 +1,12 @@
+#nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+    background: black;
+}
+#navs {
+    justify-items: space-between;
+    width: 25vh;
+}

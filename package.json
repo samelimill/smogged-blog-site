@@ -1,5 +1,5 @@
 {
-  "name": "tattoo-or-doo-doo",
+  "name": "smogged-blog-site",
   "version": "1.0.0",
   "description": "MVC Blog Site",
   "main": "server.js",
@@ -15,11 +15,13 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
     "handlebars": "^4.7.8",
     "mysql2": "^3.6.2",
     "sequelize": "^6.33.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.1.2"

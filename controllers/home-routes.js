@@ -4,18 +4,22 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-      const blogData = await Blog.findAll({
+      const blogsData = await Blog.findAll({
+        attributes: ['id', 'title', 'text', 'date_created'],
         include: [{
           model: User,
           attributes: ['username'],
-        }]
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment'],
+        }],
         order: [['date_created', 'ASC']],
       });
   
-      const pastBlogs = blogData.map((blogs) => blogs.get({ plain: true }));
+      const pastBlogs = blogsData.map((blogs) => blogs.get({ plain: true }));
   
       res.render('homepage', {
-        users,
         logged_in: req.session.logged_in,
       });
     } catch (err) {
@@ -25,12 +29,14 @@ router.get('/', withAuth, async (req, res) => {
   
 router.get('/login', (req, res) => {
 // If a session exists, redirect the request to the homepage
-    if (req.session.logged_in) {
-        res.redirect('/');
-        return;
-    }
-
     res.render('login');
+});
+
+router.get('/homepage', (req,res) => {
+  // if (!req.session.user) {
+  //   return res.redirect('/login');
+  // };
+  res.render('homepage');
 });
   
 module.exports = router;

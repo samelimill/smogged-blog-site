@@ -3,27 +3,38 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {{!-- Tailwind link --}}
+		<link
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css'
+		/>
         <link rel="stylesheet" href="/css/style.css">
         <title>Tech Blog for Web Frogs</title>
     </head>
-
+    <header>
+		<nav class='bg-gradient-to-r from-purple-500 to-pink-500 flex h-20 p-4'>
+			<div class='p-2 flex-auto'>
+				<a href='/homepage' class='hover:text-yellow-400 font-mono'>Tech Blog
+				</a>
+			</div>
+			<ul class='flex'>
+				<li class='p-2'>
+					{{#if loggedIn}}
+					<a href='/gallery'class='text-gray-400 transition hover:text-yellow-400 font-mono'>Dashboard</a>
+				</li>
+				<li class='p-2'>
+						<a href='/logout' id="logout" class='text-gray-400 transition hover:text-yellow-400 font-mono'>Logout</a>
+					{{else}}
+						<a href='/login' class='text-gray-400 transition hover:text-yellow-400 font-mono'>Login</a>
+						</li>
+				<li class='p-2'>
+					<a href='/signup' class='text-gray-400 transition hover:text-yellow-400 font-mono'>Signup</a>
+					{{/if}}
+				</li>
+			</ul>
+		</nav>
+	</header>
 <body>
-    <header id="nav-bar">
-        <h1>Tech Blog</h1>
-        <nav>
-        {{#if logged_in}}
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <button id="logout">Logout</button>
-        {{else}}
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/login">Login</a>
-        {{/if}}
-        </nav>
-  </header>
-  
-  <main>{{{body}}}</main>
-
+    {{{body}}}
 </body>
 </html>
